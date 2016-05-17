@@ -81,15 +81,49 @@ describe 'May 2016' do
   describeWeek(month, week: 4, start_date: '2016-05-23', end_date: '2016-05-29')
   describeWeek(month, week: 5, start_date: '2016-05-30', end_date: '2016-05-31')
 
+  describe 'dates of weeks' do
+    let(:weeks) { month.weeks }
+    specify 'week one contains 1-1' do
+      dates = weeks[3].dates
+      expected_dates = (16..22).map { |day| Date.parse("2016-05-#{day}") }
+      expect(dates.size).to eq(7)
+      expect(dates).to eq(expected_dates)
+    end
+  end
+
   describe 'converting to JSON' do
     let (:weeks_json) {
       %q([
-        { "start_date": "2016-05-01", "end_date": "2016-05-01" },
-        { "start_date": "2016-05-02", "end_date": "2016-05-08" },
-        { "start_date": "2016-05-09", "end_date": "2016-05-15" },
-        { "start_date": "2016-05-16", "end_date": "2016-05-22" },
-        { "start_date": "2016-05-23", "end_date": "2016-05-29" },
-        { "start_date": "2016-05-30", "end_date": "2016-05-31" }
+        {
+          "start_date": "2016-05-01",
+          "end_date": "2016-05-01",
+          "dates": [ "2016-05-01" ]
+        },
+        {
+          "start_date": "2016-05-02",
+          "end_date": "2016-05-08",
+          "dates": ["2016-05-02", "2016-05-03", "2016-05-04", "2016-05-05", "2016-05-06", "2016-05-07", "2016-05-08" ]
+        },
+        {
+          "start_date": "2016-05-09",
+          "end_date": "2016-05-15",
+          "dates": [ "2016-05-09", "2016-05-10", "2016-05-11", "2016-05-12", "2016-05-13", "2016-05-14", "2016-05-15" ]
+         },
+        {
+          "start_date": "2016-05-16",
+          "end_date": "2016-05-22",
+          "dates": [ "2016-05-16", "2016-05-17", "2016-05-18", "2016-05-19", "2016-05-20", "2016-05-21", "2016-05-22" ]
+        },
+        {
+          "start_date": "2016-05-23",
+          "end_date": "2016-05-29",
+          "dates": [ "2016-05-23", "2016-05-24", "2016-05-25", "2016-05-26", "2016-05-27", "2016-05-28", "2016-05-29" ]
+        },
+        {
+          "start_date": "2016-05-30",
+          "end_date": "2016-05-31",
+          "dates": [ "2016-05-30", "2016-05-31"]
+        }
       ])
     }
     it 'converts weeks to JSON' do
