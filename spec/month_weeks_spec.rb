@@ -80,6 +80,19 @@ describe 'May 2016' do
   describeWeek(month, week: 3, start_date: '2016-05-16', end_date: '2016-05-22')
   describeWeek(month, week: 4, start_date: '2016-05-23', end_date: '2016-05-29')
   describeWeek(month, week: 5, start_date: '2016-05-30', end_date: '2016-05-31')
+
+  it 'converts weeks to JSON' do
+    expected_json = %q([
+      {"start_date":"2016-05-01","end_date":"2016-05-01"},
+      {"start_date":"2016-05-02","end_date":"2016-05-08"},
+      {"start_date":"2016-05-09","end_date":"2016-05-15"},
+      {"start_date":"2016-05-16","end_date":"2016-05-22"},
+      {"start_date":"2016-05-23","end_date":"2016-05-29"},
+      {"start_date":"2016-05-30","end_date":"2016-05-31"}
+    ])
+    generated_json = JSON.generate(month.weeks)
+    expect(JSON.parse(generated_json)).to eq(JSON.parse(expected_json))
+  end
 end
 
 describe 'February 2016' do
