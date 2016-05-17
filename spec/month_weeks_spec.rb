@@ -32,18 +32,73 @@ describe 'May 2016' do
     expect(month.last_day_of_week).to eq(0)
   end
 
-  specify 'has 5 weeks' do
-    expect(month.weeks.length).to eq(5)
+  specify 'has 6 weeks' do
+    expect(month.weeks.length).to eq(6)
   end
 
   describe 'week 0' do
-    let (:week) { month.weeks.first }
+    let (:week) { month.weeks[0] }
     it 'starts on 2016-05-01' do
       expect(week.start_date).to eq(Date.new(2016, 5, 1))
     end
 
     it 'ends on 2016-05-01' do
       expect(week.end_date).to eq(Date.new(2016, 5, 1))
+    end
+  end
+
+  describe 'week 1' do
+    let (:week) { month.weeks[1]}
+    it 'starts on 2016-05-02' do
+      expect(week.start_date).to eq(Date.new(2016, 5, 2))
+    end
+
+    it 'ends on 2016-05-08' do
+      expect(week.end_date).to eq(Date.new(2016, 5, 8))
+    end
+  end
+
+  describe 'week 2' do
+    let (:week) { month.weeks[2]}
+    it 'starts on 2016-05-09' do
+      expect(week.start_date).to eq(Date.new(2016, 5, 9))
+    end
+
+    it 'ends on 2016-05-15' do
+      expect(week.end_date).to eq(Date.new(2016, 5, 15))
+    end
+  end
+
+  describe 'week 3' do
+    let (:week) { month.weeks[3]}
+    it 'starts on 2016-05-016' do
+      expect(week.start_date).to eq(Date.new(2016, 5, 16))
+    end
+
+    it 'ends on 2016-05-22' do
+      expect(week.end_date).to eq(Date.new(2016, 5, 22))
+    end
+  end
+
+  describe 'week 4' do
+    let (:week) { month.weeks[4]}
+    it 'starts on 2016-05-23' do
+      expect(week.start_date).to eq(Date.new(2016, 5, 23))
+    end
+
+    it 'ends on 2016-05-29' do
+      expect(week.end_date).to eq(Date.new(2016, 5, 29))
+    end
+  end
+
+  describe 'week 5' do
+    let (:week) { month.weeks[5]}
+    it 'starts on 2016-05-30' do
+      expect(week.start_date).to eq(Date.new(2016, 5, 30))
+    end
+
+    it 'ends on 2016-05-31' do
+      expect(week.end_date).to eq(Date.new(2016, 5, 31))
     end
   end
 end

@@ -19,10 +19,15 @@ module MonthWeeks
     end
 
     def weeks
-      endOfFirst = day_to_date(end_of_week(first))
-      puts endOfFirst.inspect
-      week = Week.new(first, endOfFirst)
-      [week, 1, 2, 3, 4]
+      current = first
+      weeks = []
+      while (current < last) do
+        start_date = current
+        end_date = day_to_date(end_of_week(start_date))
+        weeks << Week.new(start_date, end_date)
+        current = end_date.next
+      end
+      weeks
     end
 
     def first
@@ -51,13 +56,12 @@ module MonthWeeks
     attr_reader :init_date
 
     def end_of_week(start_of_week)
-      start_day = start_of_week.mday
-      if start_day == first.mday && last_day_of_week == first.mday
-        return start_of_week
+      if start_of_week == first
+        if first_day_of_week == first.mday
+          return start_of_week
+        end
       end
 
-      puts last.inspect
-      puts start_day.inspect
       [last, start_of_week + 6].min
     end
 
