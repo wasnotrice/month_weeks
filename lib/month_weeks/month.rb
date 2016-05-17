@@ -21,7 +21,7 @@ module MonthWeeks
     def weeks
       current = first
       weeks = []
-      while (current < last) do
+      while (current <= last) do
         start_date = current
         end_date = day_to_date(end_of_week(start_date))
         weeks << Week.new(start_date, end_date)
@@ -49,7 +49,7 @@ module MonthWeeks
       when 4, 6, 9, 11
         30
       when 2
-        Date.leap? (year) ? 29 : 28
+        Date.leap?(year) ? 29 : 28
       end
     end
     private
@@ -57,8 +57,10 @@ module MonthWeeks
 
     def end_of_week(start_of_week)
       if start_of_week == first
-        if first_day_of_week == first.mday
+        if last_day_of_week == start_of_week.wday
           return start_of_week
+        else
+          return start_of_week + (7 - start_of_week.wday)
         end
       end
 

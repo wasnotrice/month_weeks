@@ -71,7 +71,7 @@ describe 'May 2016' do
 
   describe 'week 3' do
     let (:week) { month.weeks[3]}
-    it 'starts on 2016-05-016' do
+    it 'starts on 2016-05-16' do
       expect(week.start_date).to eq(Date.new(2016, 5, 16))
     end
 
@@ -99,6 +99,93 @@ describe 'May 2016' do
 
     it 'ends on 2016-05-31' do
       expect(week.end_date).to eq(Date.new(2016, 5, 31))
+    end
+  end
+end
+
+describe 'February 2016' do
+  let(:month) { MonthWeeks::Month.new('2016-02-03') }
+  specify 'year is 2016' do
+    expect(month.year).to eq(2016)
+  end
+
+  specify 'month is 2' do
+    expect(month.month).to eq(2)
+  end
+
+  specify 'first is 2015-02-01' do
+    expect(month.first).to eq(Date.new(2016, 2, 1))
+  end
+
+  specify 'last is 2015-02-29' do
+    expect(month.last).to eq(Date.new(2016, 2, 29))
+  end
+
+  specify 'first_day_of_week is 1' do
+    expect(month.first_day_of_week).to eq(1)
+  end
+
+  specify 'last_day_of_week is 0' do
+    expect(month.last_day_of_week).to eq(0)
+  end
+
+  specify 'has 5 weeks' do
+    expect(month.weeks.length).to eq(5)
+  end
+
+  describe 'week 0' do
+    let (:week) { month.weeks[0] }
+    it 'starts on 2016-02-01' do
+      expect(week.start_date).to eq(Date.new(2016, 2, 1))
+    end
+
+    it 'ends on 2016-02-07' do
+      expect(week.end_date).to eq(Date.new(2016, 2, 7))
+    end
+  end
+
+  describe 'week 1' do
+    let (:week) { month.weeks[1]}
+    it 'starts on 2016-02-08' do
+      expect(week.start_date).to eq(Date.new(2016, 2, 8))
+    end
+
+    it 'ends on 2016-02-14' do
+      expect(week.end_date).to eq(Date.new(2016, 2, 14))
+    end
+  end
+
+  describe 'week 2' do
+    let (:week) { month.weeks[2]}
+    it 'starts on 2016-02-15' do
+      expect(week.start_date).to eq(Date.new(2016, 2, 15))
+    end
+
+    it 'ends on 2016-02-21' do
+      expect(week.end_date).to eq(Date.new(2016, 2, 21))
+    end
+  end
+
+  describe 'week 3' do
+    let (:week) { month.weeks[3]}
+    it 'starts on 2016-02-22' do
+      expect(week.start_date).to eq(Date.new(2016, 2, 22))
+    end
+
+    it 'ends on 2016-02-29' do
+      expect(week.end_date).to eq(Date.new(2016, 2, 28))
+    end
+  end
+
+  describe 'week 4' do
+    let (:week) { month.weeks[4]}
+    it 'starts on 2016-02-29' do
+      puts month.weeks[4].inspect
+      expect(week.start_date).to eq(Date.new(2016, 2, 29))
+    end
+
+    it 'ends on 2016-02-29' do
+      expect(week.end_date).to eq(Date.new(2016, 2, 29))
     end
   end
 end
