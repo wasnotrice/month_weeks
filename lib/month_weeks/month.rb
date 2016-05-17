@@ -52,6 +52,17 @@ module MonthWeeks
         Date.leap?(year) ? 29 : 28
       end
     end
+
+    def to_h
+      { :year => year, :month => month, :first => first, :last => last,
+        :weeks => weeks
+      }
+    end
+
+    def to_json(*args)
+      self.to_h.to_json(*args)
+    end
+
     private
     attr_reader :init_date
 
