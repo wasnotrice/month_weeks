@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Watson"]
   spec.email         = ["wasnotrice@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "A tiny library for working with the weeks of a month"
+  spec.homepage      = "https://github.com/wasnotrice/month_weeks"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
