@@ -6,189 +6,6 @@ describe MonthWeeks do
   end
 end
 
-describe 'May 2016' do
-  let(:month) { MonthWeeks::Month.new('2016-05-15') }
-  specify 'year is 2016' do
-    expect(month.year).to eq(2016)
-  end
-
-  specify 'month is 5' do
-    expect(month.month).to eq(5)
-  end
-
-  specify 'first is 2015-05-01' do
-    expect(month.first).to eq(Date.new(2016, 5, 1))
-  end
-
-  specify 'last is 2015-05-31' do
-    expect(month.last).to eq(Date.new(2016, 5, 31))
-  end
-
-  specify 'first_day_of_week is 1' do
-    expect(month.first_day_of_week).to eq(1)
-  end
-
-  specify 'last_day_of_week is 0' do
-    expect(month.last_day_of_week).to eq(0)
-  end
-
-  specify 'has 6 weeks' do
-    expect(month.weeks.length).to eq(6)
-  end
-
-  describe 'week 0' do
-    let (:week) { month.weeks[0] }
-    it 'starts on 2016-05-01' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 1))
-    end
-
-    it 'ends on 2016-05-01' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 1))
-    end
-  end
-
-  describe 'week 1' do
-    let (:week) { month.weeks[1]}
-    it 'starts on 2016-05-02' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 2))
-    end
-
-    it 'ends on 2016-05-08' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 8))
-    end
-  end
-
-  describe 'week 2' do
-    let (:week) { month.weeks[2]}
-    it 'starts on 2016-05-09' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 9))
-    end
-
-    it 'ends on 2016-05-15' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 15))
-    end
-  end
-
-  describe 'week 3' do
-    let (:week) { month.weeks[3]}
-    it 'starts on 2016-05-16' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 16))
-    end
-
-    it 'ends on 2016-05-22' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 22))
-    end
-  end
-
-  describe 'week 4' do
-    let (:week) { month.weeks[4]}
-    it 'starts on 2016-05-23' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 23))
-    end
-
-    it 'ends on 2016-05-29' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 29))
-    end
-  end
-
-  describe 'week 5' do
-    let (:week) { month.weeks[5]}
-    it 'starts on 2016-05-30' do
-      expect(week.start_date).to eq(Date.new(2016, 5, 30))
-    end
-
-    it 'ends on 2016-05-31' do
-      expect(week.end_date).to eq(Date.new(2016, 5, 31))
-    end
-  end
-end
-
-describe 'February 2016' do
-  let(:month) { MonthWeeks::Month.new('2016-02-03') }
-  specify 'year is 2016' do
-    expect(month.year).to eq(2016)
-  end
-
-  specify 'month is 2' do
-    expect(month.month).to eq(2)
-  end
-
-  specify 'first is 2015-02-01' do
-    expect(month.first).to eq(Date.new(2016, 2, 1))
-  end
-
-  specify 'last is 2015-02-29' do
-    expect(month.last).to eq(Date.new(2016, 2, 29))
-  end
-
-  specify 'first_day_of_week is 1' do
-    expect(month.first_day_of_week).to eq(1)
-  end
-
-  specify 'last_day_of_week is 0' do
-    expect(month.last_day_of_week).to eq(0)
-  end
-
-  specify 'has 5 weeks' do
-    expect(month.weeks.length).to eq(5)
-  end
-
-  describe 'week 0' do
-    let (:week) { month.weeks[0] }
-    it 'starts on 2016-02-01' do
-      expect(week.start_date).to eq(Date.new(2016, 2, 1))
-    end
-
-    it 'ends on 2016-02-07' do
-      expect(week.end_date).to eq(Date.new(2016, 2, 7))
-    end
-  end
-
-  describe 'week 1' do
-    let (:week) { month.weeks[1]}
-    it 'starts on 2016-02-08' do
-      expect(week.start_date).to eq(Date.new(2016, 2, 8))
-    end
-
-    it 'ends on 2016-02-14' do
-      expect(week.end_date).to eq(Date.new(2016, 2, 14))
-    end
-  end
-
-  describe 'week 2' do
-    let (:week) { month.weeks[2]}
-    it 'starts on 2016-02-15' do
-      expect(week.start_date).to eq(Date.new(2016, 2, 15))
-    end
-
-    it 'ends on 2016-02-21' do
-      expect(week.end_date).to eq(Date.new(2016, 2, 21))
-    end
-  end
-
-  describe 'week 3' do
-    let (:week) { month.weeks[3]}
-    it 'starts on 2016-02-22' do
-      expect(week.start_date).to eq(Date.new(2016, 2, 22))
-    end
-
-    it 'ends on 2016-02-29' do
-      expect(week.end_date).to eq(Date.new(2016, 2, 28))
-    end
-  end
-
-  describe 'week 4' do
-    let (:week) { month.weeks[4]}
-    it 'starts on 2016-02-29' do
-      expect(week.start_date).to eq(Date.new(2016, 2, 29))
-    end
-
-    it 'ends on 2016-02-29' do
-      expect(week.end_date).to eq(Date.new(2016, 2, 29))
-    end
-  end
-end
-
 module ExpectationGenerators
   def describeWeek(month_weeks, options)
     week_index = options.fetch(:week)
@@ -251,9 +68,35 @@ module ExpectationGenerators
   end
 end
 
+describe 'May 2016' do
+  extend ExpectationGenerators
+  month = MonthWeeks::Month.new('2016-05-15')
+
+  describeMonth(month, year: 2016, month: 5, first: 1, last: 31, weeks: 6)
+  describeConfig(month, first_day_of_week: 1, last_day_of_week: 0)
+  describeWeek(month, week: 0, start_date: '2016-05-01', end_date: '2016-05-01')
+  describeWeek(month, week: 1, start_date: '2016-05-02', end_date: '2016-05-08')
+  describeWeek(month, week: 2, start_date: '2016-05-09', end_date: '2016-05-15')
+  describeWeek(month, week: 3, start_date: '2016-05-16', end_date: '2016-05-22')
+  describeWeek(month, week: 4, start_date: '2016-05-23', end_date: '2016-05-29')
+  describeWeek(month, week: 5, start_date: '2016-05-30', end_date: '2016-05-31')
+end
+
+describe 'February 2016' do
+  extend ExpectationGenerators
+  month = MonthWeeks::Month.new('2016-02-03')
+
+  describeMonth(month, year: 2016, month: 2, first: 1, last: 29, weeks: 5)
+  describeConfig(month, first_day_of_week: 1, last_day_of_week: 0)
+  describeWeek(month, week: 0, start_date: '2016-02-01', end_date: '2016-02-07')
+  describeWeek(month, week: 1, start_date: '2016-02-08', end_date: '2016-02-14')
+  describeWeek(month, week: 2, start_date: '2016-02-15', end_date: '2016-02-21')
+  describeWeek(month, week: 3, start_date: '2016-02-22', end_date: '2016-02-28')
+  describeWeek(month, week: 4, start_date: '2016-02-29', end_date: '2016-02-29')
+end
+
 describe "March 2016" do
   extend ExpectationGenerators
-
   month = MonthWeeks::Month.new('2016-03-30')
 
   describeMonth(month, year: 2016, month: 3, first: 1, last: 31, weeks: 5)
