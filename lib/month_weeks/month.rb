@@ -63,6 +63,10 @@ module MonthWeeks
       self.to_h.to_json(*args)
     end
 
+    def to_s
+      sprintf("%d-%02d", year, month)
+    end
+
     private
     attr_reader :init_date
 

@@ -31,6 +31,7 @@ module ExpectationGenerators
     last = options.fetch(:last)
     first_padded = sprintf('%02d', first)
     last_padded = sprintf('%02d', last)
+    month_padded = sprintf('%02d', month)
     weeks = options.fetch(:weeks)
 
     specify "year is #{year}" do
@@ -51,6 +52,10 @@ module ExpectationGenerators
 
     it "has #{weeks} weeks" do
       expect(month_weeks.weeks.length).to eq(weeks)
+    end
+
+    specify "string representation is '#{year}-#{month_padded}'" do
+      expect(month_weeks.to_s).to eq("#{year}-#{month_padded}")
     end
   end
 
