@@ -41,15 +41,15 @@ module ExpectationGenerators
       expect(month_weeks.month).to eq(month)
     end
 
-    specify "first is 2015-02-#{first_padded}" do
+    specify "first is #{year}-#{month}-#{first_padded}" do
       expect(month_weeks.first).to eq(Date.new(year, month, first))
     end
 
-    specify "last is 2015-02-#{last_padded}" do
+    specify "last is #{year}-#{month}-#{last_padded}" do
       expect(month_weeks.last).to eq(Date.new(year, month, last))
     end
 
-    specify "has 5 weeks" do
+    it "has #{weeks} weeks" do
       expect(month_weeks.weeks.length).to eq(weeks)
     end
   end
@@ -83,7 +83,7 @@ describe 'May 2016' do
 
   describe 'dates of weeks' do
     let(:weeks) { month.weeks }
-    specify 'week one contains 1-1' do
+    specify 'week 3 contains 16-22' do
       dates = weeks[3].dates
       expected_dates = (16..22).map { |day| Date.parse("2016-05-#{day}") }
       expect(dates.size).to eq(7)
