@@ -19,5 +19,9 @@ module MonthWeeks
     def to_json(*args)
       self.to_h.to_json(*args)
     end
+
+    def to_s
+      "#{start_date.strftime} -- #{end_date.strftime}"
+    end
   end
 end

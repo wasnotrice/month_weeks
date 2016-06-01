@@ -9,17 +9,23 @@ end
 module ExpectationGenerators
   def describeWeek(month_weeks, options)
     week_index = options.fetch(:week)
-    start_date_string = options.fetch(:start_date)
-    end_date_string = options.fetch(:end_date)
+    start_date = Date.parse(options.fetch(:start_date))
+    start_date_string = start_date.strftime
+    end_date = Date.parse(options.fetch(:end_date))
+    end_date_string = end_date.strftime
 
     describe "week #{week_index}" do
       let (:week) { month_weeks.weeks[week_index] }
       it "starts on #{start_date_string}" do
-        expect(week.start_date).to eq(Date.parse(start_date_string))
+        expect(week.start_date).to eq(start_date)
       end
 
       it "ends on #{end_date_string}" do
-        expect(week.end_date).to eq(Date.parse(end_date_string))
+        expect(week.end_date).to eq(end_date)
+      end
+
+      it "looks like '#{start_date_string} -- #{end_date_string}'" do
+        expect(week.to_s).to eq("#{start_date_string} -- #{end_date_string}")
       end
     end
   end
@@ -54,7 +60,7 @@ module ExpectationGenerators
       expect(month_weeks.weeks.length).to eq(weeks)
     end
 
-    specify "string representation is '#{year}-#{month_padded}'" do
+    it "looks like '#{year}-#{month_padded}'" do
       expect(month_weeks.to_s).to eq("#{year}-#{month_padded}")
     end
   end
