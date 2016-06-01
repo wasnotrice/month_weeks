@@ -5,8 +5,19 @@ module MonthWeeks
     attr_reader :first_day_of_week
 
     public
-    def initialize(date, options = {})
-      @init_date = Date.parse(date)
+    def initialize(*args)
+      options = args.last.kind_of?(Hash) ? args.pop : {}
+
+      if args.length == 2
+        year, month = args
+        @init_date = Date.new(year, month)
+      elsif args.length == 1
+        date = args.first
+        @init_date = Date.parse(date)
+      else
+        raise ArgumentError.new("wrong number of arguments (0 for 1..3)")
+      end
+
       @first_day_of_week = options[:first_day_of_week] || 1
     end
 

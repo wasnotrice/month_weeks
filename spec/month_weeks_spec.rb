@@ -79,6 +79,68 @@ module ExpectationGenerators
   end
 end
 
+describe 'Creating' do
+  describe 'with a valid date string' do
+    it 'succeeds' do
+      expect(MonthWeeks::Month.new('2014-12-10').to_s).to eq('2014-12')
+    end
+  end
+
+  describe 'with a valid date string starting on day 0' do
+    let(:month_week) { MonthWeeks::Month.new('2014-12-10', first_day_of_week: 0) }
+    it 'succeeds' do
+      expect(month_week.to_s).to eq('2014-12')
+    end
+
+    it 'starts on day 0' do
+      expect(month_week.first_day_of_week).to eq(0)
+    end
+
+    it 'ends on day 6' do
+      expect(month_week.last_day_of_week).to eq(6)
+    end
+  end
+
+  describe 'with a year and month' do
+    it 'succeeds' do
+      expect(MonthWeeks::Month.new(2014, 12).to_s).to eq('2014-12')
+    end
+  end
+
+  describe 'with a year and month starting on day 3' do
+    let(:month_week) { MonthWeeks::Month.new('2012-08-22', first_day_of_week: 2) }
+    it 'succeeds' do
+      expect(month_week.to_s).to eq('2012-08')
+    end
+
+    it 'starts on day 2' do
+      expect(month_week.first_day_of_week).to eq(2)
+    end
+
+    it 'ends on day 1' do
+      expect(month_week.last_day_of_week).to eq(1)
+    end
+  end
+
+  describe 'with no arguments' do
+    it 'raises ArgumentError' do
+      expect(Proc.new { MonthWeeks::Month.new() }).to raise_error(ArgumentError)
+    end
+  end
+
+  describe 'with year, month, and day' do
+    it 'raises ArgumentError' do
+      expect(Proc.new { MonthWeeks::Month.new(2015, 05, 01) }).to raise_error(ArgumentError)
+    end
+  end
+
+  describe 'with an invalid date string' do
+    it 'raises ArgumentError' do
+      expect(Proc.new { MonthWeeks::Month.new('invalid date') }).to raise_error(ArgumentError)
+    end
+  end
+end
+
 describe 'May 2016' do
   extend ExpectationGenerators
   month = MonthWeeks::Month.new('2016-05-15')
